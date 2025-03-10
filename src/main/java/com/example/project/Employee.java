@@ -31,6 +31,7 @@ public class Employee extends HttpServlet {
        out.println("<h1>Employee Information</h1>");
        out.println("<pre>"+U1.details()+"</pre>");
        out.println("</body></html>");
+       System.out.println("hello world");
 
 
 
