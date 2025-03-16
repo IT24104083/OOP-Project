@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: thami
-  Date: 3/14/2025
-  Time: 12:30 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,34 +9,34 @@
 </head>
 <body>
 <div class="container">
-    <form>
+    <form action="register" method="post">
         <h2>Registration</h2>
 
         <div class="form-group">
             <label for="fullname">Full Name</label>
-            <input type="text" id="fullname" placeholder="Enter your name">
+            <input type="text" id="fullname" name="fullname" placeholder="Enter your name" required>
         </div>
 
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter your email">
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
         </div>
 
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter your password">
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
         </div>
 
         <div class="form-group">
             <label>Gender</label>
             <div class="gender-options">
-                <input type="radio" id="male" name="gender">
+                <input type="radio" id="male" name="gender" value="Male">
                 <label for="male">Male</label>
 
-                <input type="radio" id="female" name="gender">
+                <input type="radio" id="female" name="gender" value="Female">
                 <label for="female">Female</label>
 
-                <input type="radio" id="other" name="gender">
+                <input type="radio" id="other" name="gender" value="Other">
                 <label for="other">Prefer not to say</label>
             </div>
         </div>
