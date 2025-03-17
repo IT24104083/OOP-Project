@@ -28,6 +28,7 @@ public class registration extends HttpServlet {
             writer.println("Email: "+email);
             writer.println("Password: "+password);
             writer.println("Gender: "+gender);
+            writer.println("--------------------------------------------------------------");
 
             response.setContentType("text/html");
             response.getWriter().println("<h3>Registration Successful</h3>");

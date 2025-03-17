@@ -1,4 +1,8 @@
 Full Name: thamidu
 Email: thaminduwijesinghe@gmail.com
-Password: jjjjj
+Password: tgiuhewuoghowg
 Gender: Male
+Full Name: thamidu
+Email: it24104083@my.sliit.lk
+Password: 45y45y4y
+Gender: null
