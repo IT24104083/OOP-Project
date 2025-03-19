@@ -6,3 +6,7 @@ Full Name: thamidu
 Email: it24104083@my.sliit.lk
 Password: 45y45y4y
 Gender: null
+Full Name: Gihani
+Email: gihani.g@sliit.lk
+Password: 123
+Gender: Female

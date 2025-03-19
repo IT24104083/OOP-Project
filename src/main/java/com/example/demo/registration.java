@@ -19,6 +19,7 @@ public class registration extends HttpServlet {
         String gender = request.getParameter("gender");
 
 
+
         String filepath="C:\\Files\\Degree\\Semester 2\\Object Oriented Programming\\project\\project\\Data\\user.txt";
 
         try(FileWriter fw = new FileWriter(filepath,true);
