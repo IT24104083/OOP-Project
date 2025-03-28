@@ -10,3 +10,18 @@ Full Name: Gihani
 Email: gihani.g@sliit.lk
 Password: 123
 Gender: Female
+Full Name: thamidu
+Email: thaminduwijesinghe@gmail.com
+Password: egrergeg
+Gender: Male
+--------------------------------------------------------------
+Full Name: chamath
+Email: thamiduwijesinghe@gmai.com
+Password: ejrfjpojge
+Gender: Male
+--------------------------------------------------------------
+Full Name: thamidu
+Email: thaminduwijesinghe@gmail.com
+Password: 3g3g5g
+Gender: Male
+--------------------------------------------------------------

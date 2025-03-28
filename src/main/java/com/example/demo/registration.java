@@ -18,7 +18,8 @@ public class registration extends HttpServlet {
         String password = request.getParameter("password");
         String gender = request.getParameter("gender");
 
-
+        customer c1=new customer(name,email,gender);
+        c1.display();
 
         String filepath="C:\\Files\\Degree\\Semester 2\\Object Oriented Programming\\project\\project\\Data\\user.txt";
 
@@ -39,5 +40,11 @@ public class registration extends HttpServlet {
         }
 
 
+
     }
+
+
+
+
+
 }
