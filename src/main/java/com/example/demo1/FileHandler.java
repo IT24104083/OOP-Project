@@ -4,6 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
 public class FileHandler {
     private static final String USERS_FILE = "C:\\Users\\thami\\OneDrive\\Desktop\\project\\OOP-Project\\Data\\user.txt";
     public static synchronized void saveUser(User user) throws IOException {
