@@ -18,6 +18,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="index.jsp">Customer Login</a></li>
     </ul>
   </nav>
 </header>
@@ -66,7 +67,14 @@
 
 <!-- Footer -->
 <footer>
-  <p>&copy; 2025 Salon Maleesha. All Rights Reserved.</p>
+  <div class="footer-content">
+    <div class="footer-section">
+      <p>&copy; 2025 Salon Maleesha. All Rights Reserved.</p>
+    </div>
+    <div class="footer-section">
+      <a href="employeeLogin.jsp">Employee Login</a>
+    </div>
+  </div>
 </footer>
 
 </body>

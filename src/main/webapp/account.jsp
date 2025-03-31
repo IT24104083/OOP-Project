@@ -1,367 +1,115 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.Objects" %>
 <html>
 <head>
-    <title>My Account - Salon Booking System</title>
-    <style>
-        :root {
-            --primary-color: #6a5acd;
-            --secondary-color: #9370db;
-            --danger-color: #e74c3c;
-            --success-color: #2ecc71;
-            --text-color: #333;
-            --light-gray: #f5f5f5;
-            --border-radius: 8px;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--light-gray);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        header {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            margin-bottom: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .welcome-message h1 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .logout-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-
-        .logout-btn:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .account-section {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 2rem;
-        }
-
-        .profile-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: 1.5rem;
-            height: fit-content;
-        }
-
-        .profile-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .profile-icon {
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            font-weight: bold;
-        }
-
-        .profile-info h2 {
-            color: var(--primary-color);
-            margin-bottom: 0.25rem;
-        }
-
-        .profile-info p {
-            color: #666;
-        }
-
-        .account-details {
-            margin-top: 1.5rem;
-        }
-
-        .detail-item {
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .detail-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .detail-label {
-            font-weight: 600;
-            color: #666;
-            margin-bottom: 0.25rem;
-            display: block;
-        }
-
-        .detail-value {
-            font-size: 1.1rem;
-        }
-
-        .actions-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: 1.5rem;
-        }
-
-        .section-title {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--light-gray);
-        }
-
-        .action-btn {
-            display: block;
-            width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
-            border: none;
-            border-radius: var(--border-radius);
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-            text-decoration: none;
-        }
-
-        .update-email {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .update-email:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .update-password {
-            background-color: #3498db;
-            color: white;
-        }
-
-        .update-password:hover {
-            background-color: #2980b9;
-        }
-
-        .delete-account {
-            background-color: var(--danger-color);
-            color: white;
-        }
-
-        .delete-account:hover {
-            background-color: #c0392b;
-        }
-
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            overflow: auto;
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 10% auto;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #999;
-        }
-
-        .close-btn:hover {
-            color: #666;
-        }
-
-        .modal-title {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-        }
-
-        .submit-btn {
-            background-color: var(--success-color);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-
-        .submit-btn:hover {
-            background-color: #27ae60;
-        }
-
-        .error-message {
-            color: var(--danger-color);
-            margin-top: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .success-message {
-            color: var(--success-color);
-            margin-top: 1rem;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .account-section {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-content {
-                margin: 20% auto;
-                width: 95%;
-            }
-        }
-    </style>
+    <title>My Account - Salon Maleesha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="account.css">
 </head>
 <body>
 <div class="container">
     <header>
         <div class="welcome-message">
             <h1>Welcome, ${user.name}!</h1>
-            <p>Manage your salon booking account</p>
+            <p>Your personal beauty dashboard</p>
         </div>
-        <a href="LogoutServlet" class="logout-btn">Logout</a>
+        <a href="LogoutServlet" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
     </header>
 
     <div class="account-section">
         <div class="profile-card">
             <div class="profile-header">
-                <div class="profile-icon">
+                <div class="profile-avatar">
                     ${user.name.charAt(0)}
                 </div>
                 <div class="profile-info">
                     <h2>${user.name}</h2>
-                    <p>Salon Customer</p>
+                    <p>Valued Member Since 2023</p>
                 </div>
             </div>
 
             <div class="account-details">
                 <div class="detail-item">
-                    <span class="detail-label">Email Address</span>
+                    <span class="detail-label"><i class="fas fa-envelope"></i> Email</span>
                     <span class="detail-value">${user.email}</span>
                 </div>
                 <div class="detail-item">
-                    <span class="detail-label">Member Since</span>
-                    <span class="detail-value">Today</span>
+                    <span class="detail-label"><i class="fas fa-star"></i> Membership</span>
+                    <span class="detail-value">Premium</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label"><i class="fas fa-calendar-alt"></i> Last Visit</span>
+                    <span class="detail-value">15 Nov 2023</span>
                 </div>
             </div>
         </div>
 
         <div class="actions-card">
-            <h3 class="section-title">Account Actions</h3>
+            <h3 class="section-title">Beauty Services</h3>
 
-            <button class="action-btn update-email" onclick="openModal('emailModal')">
-                Update Email Address
-            </button>
+            <div class="action-grid">
+                <div class="action-card book-appointment">
+                    <div class="action-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Book Appointment</h3>
+                    <p>Schedule your next pampering session with our experts</p>
+                    <a href="booking.jsp" class="action-btn">Book Now</a>
+                </div>
 
-            <button class="action-btn update-password" onclick="openModal('passwordModal')">
-                Change Password
-            </button>
+                <div class="action-card update-email">
+                    <div class="action-icon">
+                        <i class="fas fa-at"></i>
+                    </div>
+                    <h3>Update Email</h3>
+                    <p>Change your account email address</p>
+                    <button onclick="openModal('emailModal')" class="action-btn">Update</button>
+                </div>
 
-            <button class="action-btn delete-account" onclick="openModal('deleteModal')">
-                Delete My Account
-            </button>
+                <div class="action-card update-password">
+                    <div class="action-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3>Change Password</h3>
+                    <p>Set a new secure password for your account</p>
+                    <button onclick="openModal('passwordModal')" class="action-btn">Change</button>
+                </div>
+
+                <div class="action-card delete-account">
+                    <div class="action-icon">
+                        <i class="fas fa-user-times"></i>
+                    </div>
+                    <h3>Delete Account</h3>
+                    <p>Permanently remove your account from our system</p>
+                    <button onclick="openModal('deleteModal')" class="action-btn">Delete</button>
+                </div>
+            </div>
 
             <% if (request.getAttribute("success") != null) { %>
             <div class="success-message">
-                <%= request.getAttribute("success") %>
+                <i class="fas fa-check-circle"></i> <%= request.getAttribute("success") %>
             </div>
             <% } %>
 
             <% if (request.getAttribute("error") != null) { %>
             <div class="error-message">
-                <%= request.getAttribute("error") %>
+                <i class="fas fa-exclamation-circle"></i> <%= request.getAttribute("error") %>
             </div>
             <% } %>
         </div>
     </div>
 </div>
 
-<!-- Update Email Modal -->
+<!-- Email Update Modal -->
 <div id="emailModal" class="modal">
     <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('emailModal')">&times;</span>
-        <h3 class="modal-title">Update Email Address</h3>
+        <span class="close-modal" onclick="closeModal('emailModal')">&times;</span>
+        <h3 class="modal-title">Update Email</h3>
         <form action="UpdateEmailServlet" method="post">
             <div class="form-group">
-                <label for="newEmail">New Email</label>
+                <label for="newEmail">New Email Address</label>
                 <input type="email" id="newEmail" name="newEmail" required>
             </div>
             <div class="form-group">
@@ -373,10 +121,10 @@
     </div>
 </div>
 
-<!-- Update Password Modal -->
+<!-- Password Update Modal -->
 <div id="passwordModal" class="modal">
     <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('passwordModal')">&times;</span>
+        <span class="close-modal" onclick="closeModal('passwordModal')">&times;</span>
         <h3 class="modal-title">Change Password</h3>
         <form action="UpdatePasswordServlet" method="post" onsubmit="return validatePasswordChange()">
             <div class="form-group">
@@ -391,7 +139,7 @@
                 <label for="confirmPassword">Confirm New Password</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" required>
             </div>
-            <div id="passwordError" class="error-message"></div>
+            <div id="passwordError" class="error-message" style="display: none;"></div>
             <button type="submit" class="submit-btn">Change Password</button>
         </form>
     </div>
@@ -400,59 +148,19 @@
 <!-- Delete Account Modal -->
 <div id="deleteModal" class="modal">
     <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('deleteModal')">&times;</span>
+        <span class="close-modal" onclick="closeModal('deleteModal')">&times;</span>
         <h3 class="modal-title">Delete Account</h3>
-        <p>Are you sure you want to delete your account? This action cannot be undone. All your data will be permanently removed.</p>
+        <p style="margin-bottom: 1.5rem;">Are you sure you want to delete your account? This action cannot be undone.</p>
         <form action="DeleteAccountServlet" method="post">
             <div class="form-group">
                 <label for="confirmPasswordDelete">Enter your password to confirm</label>
                 <input type="password" id="confirmPasswordDelete" name="password" required>
             </div>
-            <button type="submit" class="submit-btn" style="background-color: var(--danger-color);">
-                Permanently Delete Account
-            </button>
+            <button type="submit" class="submit-btn" style="background: linear-gradient(135deg, #FF7E5F, #FEB47B);">Permanently Delete Account</button>
         </form>
     </div>
 </div>
 
-<script>
-    // Modal functions
-    function openModal(modalId) {
-        document.getElementById(modalId).style.display = 'block';
-    }
-
-    function closeModal(modalId) {
-        document.getElementById(modalId).style.display = 'none';
-        document.getElementById('passwordError').textContent = '';
-    }
-
-    // Close modal when clicking outside
-    window.onclick = function(event) {
-        if (event.target.className === 'modal') {
-            document.querySelectorAll('.modal').forEach(modal => {
-                modal.style.display = 'none';
-            });
-        }
-    }
-
-    // Password validation
-    function validatePasswordChange() {
-        const newPassword = document.getElementById('newPassword').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-        const errorElement = document.getElementById('passwordError');
-
-        if (newPassword !== confirmPassword) {
-            errorElement.textContent = "Passwords do not match!";
-            return false;
-        }
-
-        if (newPassword.length < 8) {
-            errorElement.textContent = "Password must be at least 8 characters long!";
-            return false;
-        }
-
-        return true;
-    }
-</script>
+<script src="account.js"></script>
 </body>
 </html>
