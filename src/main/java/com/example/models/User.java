@@ -1,38 +1,43 @@
-package com.example.demo1;
+package com.example.models;
 
 import java.util.Objects;
 
 public class User {
+    private int customerId;
     private String name;
     private String email;
     private String password;
 
-    public User(String name, String email, String password) {
+    public User(int customerId, String name, String email, String password) {
+        this.customerId = customerId;
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
     // Getters and setters
+    public int getCustomerId() { return customerId; }
     public String getName() { return name; }
     public String getEmail() { return email; }
     public String getPassword() { return password; }
 
+    public void setCustomerId(int customerId) { this.customerId = customerId; }
     public void setEmail(String email) { this.email = email; }
     public void setPassword(String password) { this.password = password; }
 
     // Convert user to file string format
     public String toFileString() {
-        return "name:" + name + ",email:" + email + ",password:" + password;
+        return "customerId:" + customerId + ",name:" + name + ",email:" + email + ",password:" + password;
     }
 
     // Create user from file string
     public static User fromFileString(String fileString) {
         String[] parts = fileString.split(",");
-        String name = parts[0].split(":")[1];
-        String email = parts[1].split(":")[1];
-        String password = parts[2].split(":")[1];
-        return new User(name, email, password);
+        int customerId = Integer.parseInt(parts[0].split(":")[1]);
+        String name = parts[1].split(":")[1];
+        String email = parts[2].split(":")[1];
+        String password = parts[3].split(":")[1];
+        return new User(customerId, name, email, password);
     }
 
     @Override

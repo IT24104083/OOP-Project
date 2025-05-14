@@ -1,5 +1,6 @@
-package com.example.demo1;
+package com.example.servlets;
 
+import com.example.models.User;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;

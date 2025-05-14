@@ -1,5 +1,6 @@
-package com.example.demo1;
+package com.example.servlets;
 
+import com.example.models.User;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -25,11 +26,11 @@ public class DeleteAccountServlet extends HttpServlet {
             }
 
             List<User> users = FileHandler.readUsers();
-            users.removeIf(user -> user.equals(currentUser));
+            users.removeIf(user -> user.getCustomerId() == currentUser.getCustomerId()); // Use customerId for removal
 
             FileHandler.updateUsers(users);
             session.invalidate(); // Logout user
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("emplogin.jsp");
 
         } catch (IOException e) {
             e.printStackTrace();
